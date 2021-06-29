@@ -1,0 +1,74 @@
+MU204_1	Hong Kong Delivery China Eastern TWO ZERO FOUR parking bay Sierra one ZERO NINER with information Romeo ready
+MU204_10	Ground China Eastern TWO ZERO FOUR request taxi
+MU204_2	China Eastern TWO ZERO FOUR roger QNH ONE ZERO ONE FIVE contact Ground ONE TWO TWO DECIMAL FIVE FIVE
+MU204_3	QNH ONE ZERO ONE FIVE Ground ONE TWO TWO DECIMAL FIVE FIVE China Eastern TWO ZERO FOUR bye-bye
+MU204_4	Bye-bye
+MU204_5	Hong Kong Ground good afternoon China Eastern TWO ZERO FOUR parking bay Sierra ONE ZERO NINER ready
+MU204_6	China Eastern TWO ZERO FOUR standby
+MU204_7	Roger
+MU204_8	China Eastern TWO ZERO FOUR start approved and pushback red
+MU204_9	Pushback red start-up approved China Eastern TWO ZERO FOUR
+MU2059_1	CHINA EASTERN TWO ZERO FIVE NINER maintaining one zero thousand one hundred meters squawking zero one one five
+MU2059_10	Incheon Control good evening CHINA EASTERN TWO ZERO FIVE NINER maintaining flight level three three zero
+MU2059_2	CHINA EASTERN TWO ZERO FIVE NINER Incheon Control roger descend to maintain flight level three three zero
+MU2059_3	Descend to and maintain flight level three three zero CHINA EASTERN TWO ZERO FIVE NINER
+MU2059_4	CHINA EASTERN TWO ZERO FIVE NINER cancel offset cleared direct POLEG
+MU2059_5	Cancel offset direct to POLEG CHINA EASTERN TWO ZERO FIVE NINER confirm
+MU2059_6	Affirm papa Oscar lima echo golf POLEG
+MU2059_7	papa Oscar lima echo golf direct to POLEG CHINA EASTERN TWO ZERO FIVE NINER thank you
+MU2059_8	CHINA EASTERN TWO ZERO FIVE NINER contact Daegu Control one three four decimal one seven
+MU2059_9	one three four decimal one seven CHINA EASTERN TWO ZERO FIVE NINER
+MU2060_1	Kansai Delivery good morning China Eastern two zero six zero
+MU2060_10	China Eastern two zero six zero readback is correct contact Ground one two one decimal six
+MU2060_2	Good morning China Eastern two zero six zero Kansai Delivery go ahead
+MU2060_3	China Eastern two zero six zero spot tree four propose Flight Level tree four zero and we have information Papa request clearance to Tsingtao airport
+MU2060_4	China Eastern two zero six zero standby for clearance
+MU2060_5	Standing by
+MU2060_6	China Eastern two zero six zero clearance
+MU2060_7	China Eastern two zero six zero go ahead
+MU2060_8	China Eastern two zero six zero cleared to Tsingtao airport via HELEN one Departure SOUJA transition Flight plan route maintain niner thousand expect Flight Level three four zero squawk three seven three zero
+MU2060_9	Copy cleared to Tsingtao airport via HELEN one Departure and SOUJA transition maintain niner thousand expect Flight Level tree four zero squawking tree seven tree zero China Eastern two zero six zero
+MU291_10	CHINA EASTERN two niner one  do you request higher
+MU291_5	Fukuoka Control good evening CHINA EASTERN two niner one  maintain FLIGHT LEVEL two niner zero
+MU291_6	Good evening CHINA EASTERN two niner one  Fukuoka Control squawk three one five four
+MU291_7	Squawk tree one five four CHINA EASTERN two niner one 
+MU291_8	CHINA EASTERN two niner one  reclear direct to Foxtrot Uniform Echo
+MU291_9	Direct to Foxtrot Uniform Echo CHINA EASTERN two niner one 
+MU292_1	chubu Centrair International Airport information X-ray two two three zero
+MU292_10	Centrair Delivery good morning China Eastern two niner two
+MU292_2	ILS Zulu runway three six approach Using runway three six
+MU292_3	Departure frequency one two zero Decimal zero
+MU292_4	Wind three six zero degree one zero knots Visibility two zero kilometers Shower in the vicinity
+MU292_5	two three thousand feet cumulus scatter six thousand feet stratocumulus broken eight thousand Altocumulus
+MU292_6	Temperature six Dew Point zero QNH two niner niner eight inches Advise you have information X-ray
+MU292_7	Ground   Go ahead
+MU292_8	Good morning you can disconnect the air condition and GPU
+MU292_9	Good morning roger disconnect ground power
+MU521_1	Fukuoka Control good afternoon CHINA EASTERN five two one maintain FLIGHT LEVEL two niner zero
+MU521_10	CHINA EASTERN five two one request flight condition of FLIGHT LEVEL tree tree zero
+MU521_2	CHINA EASTERN five two one  Fukuoka Control roger
+MU521_3	CHINA EASTERN five two one copy change squawk six one seven four
+MU521_4	Change squawk six one seven four CHINA EASTERN five two one
+MU521_5	Fukuoka Control CHINA EASTERN five two one request flight condition of FLIGHT LEVEL tree tree zero
+MU521_6	Confirm CHINA EASTERN five two one five eight seven
+MU521_7	CHINA EASTERN five two one request flight condition of FLIGHT LEVEL tree tree zero
+MU521_8	CHINA EASTERN five two one roger vector turn right heading one zero zero
+MU521_9	EVA one niner one  EVA CHINA EASTERN five two one Control
+MU522_1	Narita International Airport information Bravo ZERO SEVEN ZERO ZERO
+MU522_10	FEW ZERO FOUR ZERO cumulus broken high unknown
+MU522_2	ILS RWY TREE FOUR Left approach and ILS yankee RWY TREE FOUR Right approach
+MU522_3	Landing RWY TREE FOUR Left and TREE FOUR Right
+MU522_4	departure RWY TREE FOUR Left
+MU522_5	parallel approach in progress
+MU522_6	departure frequency ONE TWO FOUR decimal TWO
+MU522_7	observe gear down operation procedure on final
+MU522_8	wind TREE TREE ZERO degree SIX knots
+MU522_9	visibility FOUR ZERO kilometers
+MU9693_03	Vientiane Control China Eastern niner six niner tree maintaining Flight Level tree six zero and squawking two five one seven
+MU9693_04	Confirm China Eastern niner six niner three
+MU9693_05	China Eastern niner six niner tree maintaining Flight Level tree six zero and squawking two five one seven
+MU9693_06	Roger identified maintain Flight Level three six zero
+MU9693_07	Maintaining flight level China Eastern niner six niner tree
+MU9693_08	China Eastern niner six niner three now contact Bangkok one two six five
+MU9693_09	one two six five China Eastern niner six niner tree good day
+MU9693_10	Bangkok Control China Eastern niner six niner tree maintaining Flight Level tree six zero and squawking two five one seven approaching  Victor Tango November
