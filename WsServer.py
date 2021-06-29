@@ -2,7 +2,7 @@ from SimpleWebSocketServer import SimpleWebSocketServer, WebSocket
 import queue
 import numpy as np
 import threading
-from SpeechModel251 import ModelSpeech, GetSymbolList
+from asrModel import ModelSpeech, GetSymbolList
 from Pinyin2Hanzi import DefaultHmmParams
 from Pinyin2Hanzi import viterbi
 hmmparams = DefaultHmmParams()

@@ -284,7 +284,7 @@ class ModelSpeech:  # 语音模型类
         base_pred = base_pred[:, :, :]
 
         # 防止多次调用ctc-decode 的get_value 导致内存持续增大 --------------------------------------------
-        ctc_class = Ctc_Decode(batch_size=batch_size, timestep=200, nclass=1424)
+        ctc_class = Ctc_Decode(batch_size=batch_size, timestep=200, nclass=682)
         predict_y = ctc_class.ctc_decode_tf([base_pred, np.reshape(input_len, (1, 1))])  # ctc解码
         r1 = predict_y[0]
         # ------------------------------------------------------------------------------------------
@@ -312,14 +312,14 @@ class ModelSpeech:  # 语音模型类
         #     print("data_input length is : %d, wrong" % len(data_input))
         #     return None
         r1 = self.Predict(data_input, input_length)
-        # list_symbol_dic = GetSymbolList()  # 获取拼音列表
-        #
-        # r_str = []
-        # for i in r1:
-        #     r_str.append(list_symbol_dic[i])
-        #
-        # return r_str
-        return r1
+        list_symbol_dic = GetSymbolList()  # 获取拼音列表
+
+        r_str = []
+        for i in r1:
+            r_str.append(list_symbol_dic[i])
+
+        return r_str
+        # return r1
 
     def RecognizeSpeech_FromFile(self, filename):
         '''
@@ -329,6 +329,7 @@ class ModelSpeech:  # 语音模型类
         wavsignal, fs = read_wav_data(filename)
 
         r = self.RecognizeSpeech(wavsignal, fs)
+
         return r
 
         pass
@@ -412,7 +413,7 @@ def test():
 
 
 def GetSymbolList():
-    with open('pinyin.txt', 'r', encoding='utf-8') as f:
+    with open('dict.txt', 'r', encoding='utf-8') as f:
         lines = f.readlines()
         lines = [line.replace('\n', "") for line in lines]
         return lines
