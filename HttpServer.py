@@ -1,22 +1,13 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""
-@author: nl8590687
-语音识别API的HTTP服务器程序
 
-"""
 import http.server
-import urllib
-import keras
 from asrModel import ModelSpeech
 
 datapath = './'
-modelpath = 'model_speech/'
+modelpath = 'checkpoint/'
 ms = ModelSpeech()
-ms.LoadModel(modelpath + 'speech_model251_e_0_step_1361250.model')
-
-ml = ModelLanguage('model_language')
-ml.LoadModel()
+ms.LoadModel(modelpath + 'weights_1624889133.0653555.hdf5')
 
 class TestHTTPHandle(http.server.BaseHTTPRequestHandler):  
 	def setup(self):
@@ -41,7 +32,6 @@ class TestHTTPHandle(http.server.BaseHTTPRequestHandler):
 	def do_POST(self):  
 		'''
 		处理通过POST方式传递过来并接收的语音数据
-		通过语音模型和语言模型计算得到语音识别结果并返回
 		'''
 		path = self.path  
 		print(path)  
@@ -95,8 +85,8 @@ class TestHTTPHandle(http.server.BaseHTTPRequestHandler):
 		
 		#buf = '<!DOCTYPE HTML> \n<html> \n<head>\n<title>Post page</title>\n</head> \n<body>Post Data:%s  <br />Path:%s\n</body>  \n</html>'%(datas,self.path)  
 		print(buf)
-		buf = bytes(buf,encoding="utf-8")
-		self.wfile.write(buf)  
+		buf = bytes(" ".join(buf),encoding="utf-8")
+		self.wfile.write(buf)
 		
 	def recognize(self, wavs, fs):
 		r=''
@@ -104,11 +94,10 @@ class TestHTTPHandle(http.server.BaseHTTPRequestHandler):
 			r_speech = ms.RecognizeSpeech(wavs, fs)
 			print(r_speech)
 			str_pinyin = r_speech
-			r = ml.SpeechToText(str_pinyin)
 		except:
-			r=''
+			str_pinyin=''
 			print('[*Message] Server raise a bug. ')
-		return r
+		return str_pinyin
 		pass
 	
 	def recognize_from_file(self, filename):

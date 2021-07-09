@@ -3,11 +3,8 @@ import queue
 import numpy as np
 import threading
 from asrModel import ModelSpeech, GetSymbolList
-from Pinyin2Hanzi import DefaultHmmParams
-from Pinyin2Hanzi import viterbi
-hmmparams = DefaultHmmParams()
 a = ModelSpeech()
-a.LoadModel("checkpoint/weights_1596110931.0748937.hdf5")
+a.LoadModel("checkpoint/weights_1624889133.0653555.hdf5")
 
 list_symbol_dic = GetSymbolList()  # 获取拼音列表
 

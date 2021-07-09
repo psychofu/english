@@ -1,20 +1,15 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-'''
-@author: nl8590687
-asrserver测试专用客户端
-
-'''
-
 import requests
 from general_function.file_wav import *
 
-url = 'http://127.0.0.1:20000/'
+url = 'http://121.5.66.137:20000/'
+# url = 'http://127.0.0.1:20000/'
 
 token = 'qwertasd'
 
-wavsignal,fs=read_wav_data('test.wav')
+wavsignal,fs=read_wav_data('data\\avi\\MU2060\\MU2060_13.wav')
 
 #print(wavsignal,fs)
 
