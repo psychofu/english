@@ -4,8 +4,8 @@
 import requests
 from general_function.file_wav import *
 
-url = 'http://121.5.66.137:20000/'
-# url = 'http://127.0.0.1:20000/'
+# url = 'http://121.5.66.137:20000/'
+url = 'http://127.0.0.1:20000/'
 
 token = 'qwertasd'
 

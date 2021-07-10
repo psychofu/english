@@ -128,7 +128,7 @@ def testFreq():
 
 if(__name__=='__main__'):
     # testFreq()
-    wave_data, fs = read_wav_data("E:\\py_project\\hk\\ASRT_english\\data\\avi\\MU291\\MU291_1.wav")
+    wave_data, fs = read_wav_data("E:\\py_project\\hk\\ASRT_english\\data\\avi\\MU2060\\MU2060_13.wav")
     # wave_data, fs = read_wav_data("../test.wav")
     wav_show(wave_data[0],fs)
     t0=time.time()
