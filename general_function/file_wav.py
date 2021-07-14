@@ -128,18 +128,29 @@ def testFreq():
 
 if(__name__=='__main__'):
     # testFreq()
-    wave_data, fs = read_wav_data("E:\\py_project\\hk\\ASRT_english\\data\\avi\\MU2060\\MU2060_13.wav")
-    # wave_data, fs = read_wav_data("../test.wav")
-    wav_show(wave_data[0],fs)
-    t0=time.time()
-    freimg = GetFrequencyFeature3(wave_data,fs)
-    t1=time.time()
-    print('time cost:',t1-t0)
+    # wave_data, fs = read_wav_data("E:\\py_project\\hk\\ASRT_english\\data\\avi\\MU291\\MU291_4.wav")
+    # # wave_data, fs = read_wav_data("../test.wav")
+    # wav_show(wave_data[0],fs)
+    # t0=time.time()
+    # freimg = GetFrequencyFeature3(wave_data,fs)
+    # t1=time.time()
+    # print('time cost:',t1-t0)
+    #
+    # freimg = freimg.T
+    # plt.subplot(111)
+    #
+    # plt.imshow(freimg)
+    # plt.colorbar(cax=None,ax=None,shrink=0.5)
+    #
+    # plt.show()
 
-    freimg = freimg.T
-    plt.subplot(111)
-
-    plt.imshow(freimg)
-    plt.colorbar(cax=None,ax=None,shrink=0.5)
-
-    plt.show()
+    f = "E:\\py_project\\hk\\ASRT_english\\data\\avi\\MU291\\MU291_4.wav"
+    w = wave.open(f, "r")
+    dt = w.readframes(78)
+    print(dt)
+    w.close()
+    print("-----------")
+    b = open(f, 'rb')
+    for _ in range(10):
+        print(b.read(78))
+    b.close()

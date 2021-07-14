@@ -61,6 +61,6 @@ def http_client():
 
 if __name__ == '__main__':
     my_record()
-    http_client()
+    # http_client()
     # print('Over!')
     # play()
