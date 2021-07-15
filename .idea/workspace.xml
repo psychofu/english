@@ -5,9 +5,6 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/HttpServer.py" beforeDir="false" afterPath="$PROJECT_DIR$/HttpServer.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/general_function/file_wav.py" beforeDir="false" afterPath="$PROJECT_DIR$/general_function/file_wav.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/speech-recorder.py" beforeDir="false" afterPath="$PROJECT_DIR$/speech-recorder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test.wav" beforeDir="false" afterPath="$PROJECT_DIR$/test.wav" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -239,11 +236,6 @@
           <url>file://$PROJECT_DIR$/general_function/file_wav.py</url>
           <line>21</line>
           <option name="timeStamp" value="20" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/HttpServer.py</url>
-          <line>44</line>
-          <option name="timeStamp" value="21" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -151,6 +151,6 @@ if(__name__=='__main__'):
     w.close()
     print("-----------")
     b = open(f, 'rb')
-    for _ in range(10):
+    for _ in range(2):
         print(b.read(78))
     b.close()

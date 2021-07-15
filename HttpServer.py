@@ -47,7 +47,7 @@ class TestHTTPHandle(http.server.BaseHTTPRequestHandler):
 		if re.search(b'name="token"\r\n\r\nasr', headInfo) is not None:
 			if bodyInfo.find(b"\x00LIST") != -1:
 				wavData = bodyInfo[78:]
-			elif bodyInfo.find(b"\x00INFOISFT"):
+			elif bodyInfo.find(b"\x00data") != -1:
 				wavData = bodyInfo[44:]
 			# 否则数据不符合
 			else:
