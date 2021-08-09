@@ -1,1 +1,7 @@
+.idea/
 data/
+packages/
+checkpoint/
+logs/
+*.wav
+
