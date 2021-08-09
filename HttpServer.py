@@ -44,7 +44,7 @@ class TestHTTPHandle(http.server.BaseHTTPRequestHandler):
 		headInfo = datas[:RIFFindex]
 		bodyInfo = datas[RIFFindex:]
 
-		if re.search(b'name="token"\r\n\r\nasr', headInfo) is not None:
+		if re.search(b'name="token".*?asr', headInfo) is not None:
 			if bodyInfo.find(b"\x00LIST") != -1:
 				wavData = bodyInfo[78:]
 			elif bodyInfo.find(b"\x00data") != -1:
@@ -63,7 +63,7 @@ class TestHTTPHandle(http.server.BaseHTTPRequestHandler):
 
 			buf = self.recognize(wave_data, 16000)
 			self._set_response()
-			print(buf)
+			# print(buf)
 			buf = bytes(" ".join(buf), encoding="utf-8")
 			self.wfile.write(buf)
 		else:
@@ -77,7 +77,7 @@ class TestHTTPHandle(http.server.BaseHTTPRequestHandler):
 		r=''
 		try:
 			r_speech = ms.RecognizeSpeech(wavs, fs)
-			print(r_speech)
+			#print(r_speech)
 			str_pinyin = r_speech
 		except:
 			str_pinyin=''

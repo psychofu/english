@@ -51,16 +51,25 @@ def save_wave_file(filename, data):
 import requests
 from general_function.file_wav import *
 def http_client():
-    url = 'http://121.5.66.137:20000/'
+
+    url = 'http://127.0.0.1:20000/'
+
     token = 'qwertasd'
+
     wavsignal, fs = read_wav_data('test.wav')
+
+    # print(wavsignal,fs)
+
     datas = {'token': token, 'fs': fs, 'wavs': wavsignal}
+
     r = requests.post(url, datas)
+
     r.encoding = 'utf-8'
+
     print(r.text)
 
 if __name__ == '__main__':
     my_record()
-    # http_client()
+    http_client()
     # print('Over!')
     # play()

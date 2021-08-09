@@ -4,7 +4,7 @@
 import os
 import wave
 import numpy as np
-import matplotlib.pyplot as plt  
+#import matplotlib.pyplot as plt
 import math
 import time
 
@@ -67,10 +67,10 @@ def wav_show(wave_data, fs): # 显示出来声音波形
     time = np.arange(0, len(wave_data)) * (1.0/fs)  # 计算声音的播放时间，单位为秒
     # 画声音波形
     #plt.subplot(211)
-    plt.plot(time, wave_data)
+    #plt.plot(time, wave_data)
     #plt.subplot(212)
     #plt.plot(time, wave_data[1], c = "g")
-    plt.show()
+    #plt.show()
 
 
 def get_wav_list(filename):
@@ -128,29 +128,18 @@ def testFreq():
 
 if(__name__=='__main__'):
     # testFreq()
-    # wave_data, fs = read_wav_data("E:\\py_project\\hk\\ASRT_english\\data\\avi\\MU291\\MU291_4.wav")
-    # # wave_data, fs = read_wav_data("../test.wav")
-    # wav_show(wave_data[0],fs)
-    # t0=time.time()
-    # freimg = GetFrequencyFeature3(wave_data,fs)
-    # t1=time.time()
-    # print('time cost:',t1-t0)
-    #
-    # freimg = freimg.T
-    # plt.subplot(111)
-    #
-    # plt.imshow(freimg)
-    # plt.colorbar(cax=None,ax=None,shrink=0.5)
-    #
-    # plt.show()
+    wave_data, fs = read_wav_data("E:\\py_project\\hk\\ASRT_english\\data\\avi\\MU291\\MU291_1.wav")
+    # wave_data, fs = read_wav_data("../test.wav")
+    wav_show(wave_data[0],fs)
+    t0=time.time()
+    freimg = GetFrequencyFeature3(wave_data,fs)
+    t1=time.time()
+    print('time cost:',t1-t0)
 
-    f = "E:\\py_project\\hk\\ASRT_english\\data\\avi\\MU291\\MU291_4.wav"
-    w = wave.open(f, "r")
-    dt = w.readframes(78)
-    print(dt)
-    w.close()
-    print("-----------")
-    b = open(f, 'rb')
-    for _ in range(2):
-        print(b.read(78))
-    b.close()
+    freimg = freimg.T
+#    plt.subplot(111)
+
+#    plt.imshow(freimg)
+#    plt.colorbar(cax=None,ax=None,shrink=0.5)
+
+#    plt.show()
