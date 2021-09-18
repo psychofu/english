@@ -96,7 +96,7 @@ def get_wav_symbol(filename):
     读取指定数据集中，所有wav文件对应的语音符号
     返回一个存储符号集的字典类型值
     '''
-    txt_obj=open(filename,'r') # 打开文件并读入
+    txt_obj=open(filename,'r', encoding="utf-8") # 打开文件并读入
     txt_text=txt_obj.read()
     txt_lines=txt_text.split('\n') # 文本分割
     dic_symbol_list={} # 初始化字典
