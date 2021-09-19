@@ -24,7 +24,7 @@ tf.compat.v1.keras.backend.set_session(sess)
 
 
 datapath = ''
-modelpath = 'model_speech'
+modelpath = 'checkpoint'
 
 
 if(not os.path.exists(modelpath)): # 判断保存模型的目录是否存在
@@ -42,11 +42,15 @@ else:
 	datapath = 'datalist'
 	modelpath = modelpath + '/'
 
-ms = ModelSpeech()
+f = open('dict.txt', 'r', encoding='utf-8')
+outputSize = len(f.readlines()) + 1
+
+f.close()
+ms = ModelSpeech(outputSize)
 
 #ms.LoadModel(modelpath + 'speech_model251_e_0_step_327500.model')
 
 # datapath, batch_size=32, save_step=1000, epochs=20
-ms.TrainModel(datapath, batch_size = 1, save_step = 1000, epochs=20)
+ms.TrainModel(datapath, batch_size = 1, save_step = 100, epochs=20)
 
 

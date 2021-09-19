@@ -22,12 +22,12 @@ ModelName = '251'
 
 
 class ModelSpeech:  # 语音模型类
-    def __init__(self):
+    def __init__(self, outputSize):
         '''
         初始化
         默认输出的拼音的表示大小是1424，即1423个拼音+1个空白块  682
         '''
-        self.MS_OUTPUT_SIZE = 1018  # 神经网络最终输出的每一个字符向量维度的大小
+        self.MS_OUTPUT_SIZE = outputSize  # 神经网络最终输出的每一个字符向量维度的大小
         # self.label_max_string_length = 128
         self.label_max_string_length = 64
         # self.AUDIO_LENGTH = 5600
@@ -141,29 +141,17 @@ class ModelSpeech:  # 语音模型类
         checkpointDIR = "checkpoint"
         if not os.path.exists(checkpointDIR):
             os.makedirs(checkpointDIR)
-        checkpoint = ModelCheckpoint("checkpoint/weights_" + str(time.time()) + ".hdf5", monitor="loss", verbose=0,
+        checkpoint = ModelCheckpoint("checkpoint/weights_model" + ".hdf5", monitor="loss", verbose=0,
                                      save_best_only=True)
         tensorboard = TensorBoard(batch_size=batch_size, update_freq="batch")
 
         try:
-            # print('[message] epoch %d . Have train datas %d+' % (epoch, n_step * save_step))
-            # data_genetator是一个生成器函数
-
             # self._model.fit_generator(yielddatas, save_step, nb_worker=2)  考虑：train_on_batch
             history = self._model.fit_generator(yielddatas, steps_per_epoch=save_step, epochs=epochs,
                                                 callbacks=[checkpoint, tensorboard])
-            # n_step += 1
         except StopIteration:
             print('[error] generator error. please check data format.')
-            # break
-        # self.SaveModel(filename='model_speech/speech_model251_e_' + str(epoch))
         self.TestModel(datapath, str_dataset='test', data_count=4)
-        # average = sum(history.history["loss"]) / len(history.history["loss"])
-        # while min(history.history["loss"]) > 50:
-        #     history = self._model.fit_generator(yielddatas, steps_per_epoch=save_step, epochs=epochs,
-        #                                              callbacks=[checkpoint, tensorboard])
-        #     self.TestModel(datapath, str_dataset='test', data_count=4)
-        # average = sum(history.history["loss"]) / len(history.history["loss"])
 
     def LoadModel(self, filename):
         '''

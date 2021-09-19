@@ -104,7 +104,7 @@ def get_wav_symbol(filename):
     for i in txt_lines:
         if(i!=''):
             txt_l=i.split('\t')
-            dic_symbol_list[txt_l[0]]=txt_l[1:]
+            dic_symbol_list[txt_l[0]]=txt_l[1]
             list_symbolmark.append(txt_l[0])
     txt_obj.close()
     return dic_symbol_list,list_symbolmark

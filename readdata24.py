@@ -34,8 +34,8 @@ class DataSpeech:
 			self.datapath = self.datapath + self.slash
 		
 		
-		self.dic_wavlist_ibingli = {}
-		self.dic_symbollist_ibingli = {}
+		self.dic_wavlist = {}
+		self.dic_symbollist = {}
 		
 		self.SymbolNum = 0 # 记录拼音符号数量
 		self.list_symbol = self.GetSymbolList() # 全部汉语拼音符号列表
@@ -61,21 +61,21 @@ class DataSpeech:
 		'''
 		# 设定选取哪一项作为要使用的数据集
 		if(self.type=='train'):
-			filename_wavlist_ibingli = 'aviation' + self.slash + 'train.wav.lst'
-			filename_symbollist_ibingli = 'aviation' + self.slash + 'train.syllable.txt'
+			filename_wavlist = 'aviation' + self.slash + 'train.wav.lst'
+			filename_symbollist = 'aviation' + self.slash + 'train.syllable.txt'
 		elif(self.type=='dev'):
-			filename_wavlist_ibingli = 'aviation' + self.slash + 'dev.wav.lst'
-			filename_symbollist_ibingli = 'aviation' + self.slash + 'dev.syllable.txt'
+			filename_wavlist = 'aviation' + self.slash + 'dev.wav.lst'
+			filename_symbollist = 'aviation' + self.slash + 'dev.syllable.txt'
 		elif(self.type=='test'):
-			filename_wavlist_ibingli = 'aviation' + self.slash + 'test.wav.lst'
-			filename_symbollist_ibingli = 'aviation' + self.slash + 'test.syllable.txt'
+			filename_wavlist = 'aviation' + self.slash + 'test.wav.lst'
+			filename_symbollist = 'aviation' + self.slash + 'test.syllable.txt'
 		else:
 			filename_wavlist = '' # 默认留空
 			filename_symbollist = ''
 		# 读取数据列表，wav文件列表和其对应的符号列表
-		self.dic_wavlist_ibingli,self.list_wavnum_ibingli = get_wav_list(self.datapath + filename_wavlist_ibingli)
+		self.dic_wavlist,self.list_wavnum = get_wav_list(self.datapath + filename_wavlist)
 		
-		self.dic_symbollist_ibingli,self.list_symbolnum_ibingli = get_wav_symbol(self.datapath + filename_symbollist_ibingli)
+		self.dic_symbollist,self.list_symbolnum = get_wav_symbol(self.datapath + filename_symbollist)
 		self.DataNum = self.GetDataNum()
 	
 	def GetDataNum(self):
@@ -83,10 +83,10 @@ class DataSpeech:
 		获取数据的数量
 		当wav数量和symbol数量一致的时候返回正确的值，否则返回-1，代表出错。
 		'''
-		num_wavlist_ibingli = len(self.dic_wavlist_ibingli)
-		num_symbollist_ibingli = len(self.dic_symbollist_ibingli)
-		if(num_wavlist_ibingli == num_symbollist_ibingli):
-			DataNum = num_wavlist_ibingli
+		num_wavlist = len(self.dic_wavlist)
+		num_symbollist = len(self.dic_symbollist)
+		if(num_wavlist == num_symbollist):
+			DataNum = num_wavlist
 		else:
 			DataNum = -1
 		
@@ -103,25 +103,21 @@ class DataSpeech:
 			三个包含wav特征矩阵的神经网络输入值，和一个标定的类别矩阵神经网络输出值
 		'''
 		# 读取一个文件
-		filename = self.dic_wavlist_ibingli[self.list_wavnum_ibingli[n_start]]
-		list_symbol=self.dic_symbollist_ibingli[self.list_symbolnum_ibingli[n_start]][0].split()
+		filename = self.dic_wavlist[self.list_wavnum[n_start]]
+		list_symbol=self.dic_symbollist[self.list_wavnum[n_start]]
 		
 		if('Windows' == plat.system()):
 			filename = filename.replace('/','\\') # windows系统下需要执行这一行，对文件路径做特别处理
 		
 		wavsignal,fs=read_wav_data(self.datapath + filename)
-		
 		# 获取输出特征
 		
 		feat_out=[]
 		#print("数据编号",n_start,filename)
-		for i in list_symbol:
-			if(''!=i):
+		for i in list_symbol.split():
+			if ''!=i:
 				n=self.SymbolToNum(i)
-				#v=self.NumToVector(n)
-				#feat_out.append(v)
 				feat_out.append(n)
-		#print('feat_out:',feat_out)
 
 		# 获取输入特征
 		data_input = GetFrequencyFeature3(wavsignal,fs)

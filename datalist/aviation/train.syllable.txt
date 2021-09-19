@@ -9,7 +9,7 @@ MU204_16	China Eastern TWO ZERO FOUR roger and recleared hold position I’ll ca
 MU204_17	Roger hold hold position China Eastern TWO ZERO FOUR
 MU204_18	China Eastern TWO ZERO FOUR taxi HOTLE EIGHT JULIET JULIET TWO holding point
 MU204_19	Taxi via HOTEL EIGHT JULIET and JULIET ONE holding point China Eastern TWO ZERO
-MU204_2 China Eastern TWO ZERO FOUR roger QNH ONE ZERO ONE FIVE contact Ground ONE TWO TWO DECIMAL FIVE FIVE
+MU204_2	China Eastern TWO ZERO FOUR roger QNH ONE ZERO ONE FIVE contact Ground ONE TWO TWO DECIMAL FIVE FIVE
 MU204_20	China Eastern TWO ZERO FOUR negative HOTEL EIGHT JULIET JULIET TWO holding point
 MU204_21	HOTEL EIGHT JULIET and JULIET TWO holding point China Eastern TWO ZERO FOUR roger
 MU204_22	China Eastern TWO ZERO FOUR JUILET TWO holding point contact Tower on ONE ONE EIGHT DECIMAL FOUR
@@ -809,7 +809,7 @@ MU7164_54	Climb to flight level tree five zero
 MU7164_55	Standby China Eastern seven one six four
 MU7164_56	Climb to flight level tree five zero China Eastern
 MU7164_57	Climb flight level tree five zero China Eastern seven one six four
-MU7554_1	AMERICAN four five，I don‘’t have any news for you yes you are on your flight plan still got determined nineteen twenty minutes ago so I am waiting for an updated for you
+MU7554_1	AMERICAN four five I don‘’t have any news for you yes you are on your flight plan still got determined nineteen twenty minutes ago so I am waiting for an updated for you
 MU7554_2	Bonjour Could you update your COBT You miss your COBT two or six minutes ago So call your ground staffs and update the COBT
 MU7554_3	OK ITALY five one Golf runway two six right for you OKASI five Bravo squawk one thousand
 MU7554_4	Tree two tree I am still checking with apron frequency your some is not free from us Call you back at that Er of new information for you sir
@@ -841,7 +841,7 @@ MU7554_29	Niner one niner Tango direct to RACHI descent level one niner zero
 MU7554_30	Niner one niner Tango contact LONDON one three five decimal tree two five bye bye
 MU7554_31	CHINA EASTERN seven five five four contact MAASTRICHT one tree tree decimal tree five five bye bye
 MU7554_32	MAASTRICHT control good afternoon CHINA EASTERN seven five five four maintain flight level tree one zero
-MU7554_33	CHINA EASTERN seven five five four MAASTRICHT 你好，identified set course to BITBU and climb flight level tree tree zero
+MU7554_33	CHINA EASTERN seven five five four MAASTRICHT identified set course to BITBU and climb flight level tree tree zero
 MU7554_34	And CHINA EASTERN seven five five four just make sure is bravo India tango bravo uniform
 MU7554_35	And media jet six five Hotel start your descent please flight level four hundred
 MU7554_36	Four four Niner four four descent now to flight level three seven zero the rates fifteen hundred or more due to opposite traffic
