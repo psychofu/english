@@ -3,18 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="03ef7e57-0f65-477f-a937-59d5dd715c7f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SpeechModel251.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/asrModel.py" beforeDir="false" afterPath="$PROJECT_DIR$/asrModel.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/datalist/aviation/dic.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/datalist/aviation/getdict.py" beforeDir="false" afterPath="$PROJECT_DIR$/datalist/aviation/getdict.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/datalist/aviation/syllable.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/datalist/aviation/train.syllable.txt" beforeDir="false" afterPath="$PROJECT_DIR$/datalist/aviation/train.syllable.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/datalist/aviation/train.wav.lst" beforeDir="false" afterPath="$PROJECT_DIR$/datalist/aviation/train.wav.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/datalist/aviation/wav.lst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dict.txt" beforeDir="false" afterPath="$PROJECT_DIR$/dict.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/general_function/file_wav.py" beforeDir="false" afterPath="$PROJECT_DIR$/general_function/file_wav.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/readdata24.py" beforeDir="false" afterPath="$PROJECT_DIR$/readdata24.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/train_mspeech.py" beforeDir="false" afterPath="$PROJECT_DIR$/train_mspeech.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
