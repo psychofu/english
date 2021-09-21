@@ -24,14 +24,11 @@ ModelName = '251'
 class ModelSpeech:  # 语音模型类
     def __init__(self, outputSize):
         '''
-        初始化
-        默认输出的拼音的表示大小是1424，即1423个拼音+1个空白块  682
+        初始化outputSize
         '''
         self.MS_OUTPUT_SIZE = outputSize  # 神经网络最终输出的每一个字符向量维度的大小
-        # self.label_max_string_length = 128
         self.label_max_string_length = 64
-        # self.AUDIO_LENGTH = 5600
-        self.AUDIO_LENGTH = 1600
+        self.AUDIO_LENGTH = 3200
         self.AUDIO_FEATURE_LENGTH = 200
         self._model, self.base_model = self.CreateModel()
 
@@ -87,7 +84,7 @@ class ModelSpeech:  # 语音模型类
                            kernel_initializer='he_normal')(layer_h13)  # 卷积层
         layer_h15 = MaxPooling2D(pool_size=1, strides=None, padding="valid")(layer_h14)  # 池化层
 
-        layer_h16 = Reshape((200, 3200))(layer_h15)  # Reshape层
+        layer_h16 = Reshape((400, 3200))(layer_h15)  # Reshape层
         # layer_h16 = Reshape((700, 3200))(layer_h15)  # Reshape层
         # layer_h16 = GRU(256, activation='relu', use_bias=True, kernel_initializer='he_normal')(layer_h16)
         # layer_h5 = LSTM(256, activation='relu', use_bias=True, return_sequences=True)(layer_h4) # LSTM层
