@@ -4,6 +4,8 @@
     <list default="true" id="03ef7e57-0f65-477f-a937-59d5dd715c7f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/asrModel.py" beforeDir="false" afterPath="$PROJECT_DIR$/asrModel.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/events.out.tfevents.1624887559.DESKTOP-I9R3TMM" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/events.out.tfevents.1624889134.labubuntu-Precision-Tower-3620" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/readdata24.py" beforeDir="false" afterPath="$PROJECT_DIR$/readdata24.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
