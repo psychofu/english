@@ -51,6 +51,6 @@ ms = ModelSpeech(outputSize)
 #ms.LoadModel(modelpath + 'speech_model251_e_0_step_327500.model')
 
 # datapath, batch_size=32, save_step=1000, epochs=20
-ms.TrainModel(datapath, batch_size = 4, save_step = 1000, epochs=100)
+ms.TrainModel(datapath, batch_size = 1, save_step = 100, epochs=20)
 
 
