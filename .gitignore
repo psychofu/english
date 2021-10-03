@@ -1,7 +1,6 @@
 .idea/*
 data/*
 packages/*
-checkpoint/*
 logs/*
 general_function/__pycache__/*
 __pycache__/*
