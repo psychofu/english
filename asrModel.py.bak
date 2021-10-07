@@ -269,7 +269,7 @@ class ModelSpeech:  # 语音模型类
         base_pred = base_pred[:, :, :]
 
         # 防止多次调用ctc-decode 的get_value 导致内存持续增大 --------------------------------------------
-        ctc_class = Ctc_Decode(batch_size=batch_size, timestep=400, nclass=829)
+        ctc_class = Ctc_Decode(batch_size=batch_size, timestep=200, nclass=829)
         predict_y = ctc_class.ctc_decode_tf([base_pred, np.reshape(input_len, (1, 1))])  # ctc解码
         r1 = predict_y[0]
         # ------------------------------------------------------------------------------------------

@@ -11,7 +11,7 @@ token = 'qwertasd'
 
 wavsignal,fs=read_wav_data('data\\avi\\MU2060\\MU2060_13.wav')
 
-print(wavsignal,fs)
+#print(wavsignal,fs)
 
 datas={'token':token, 'fs':fs, 'wavs':wavsignal}
 

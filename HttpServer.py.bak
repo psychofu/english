@@ -15,7 +15,7 @@ outputSize = len(f.readlines()) + 1
 
 f.close()
 ms = ModelSpeech(outputSize)
-ms.LoadModel(modelpath + 'weights_model.hdf5')
+ms.LoadModel(modelpath + 'weights_1624889133.0653555.hdf5')
 
 class TestHTTPHandle(http.server.BaseHTTPRequestHandler):  
 	def setup(self):

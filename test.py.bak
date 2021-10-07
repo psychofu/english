@@ -32,7 +32,7 @@ ms = ModelSpeech(outputSize)
 ms.LoadModel(modelpath + 'weights_model.hdf5')
 
 #ms.TestModel(datapath, str_dataset='test', data_count = 64, out_report = True)
-r = ms.RecognizeSpeech_FromFile('E:\\english\\data\\avi\\MU7554\\MU7554_14.wav')
+r = ms.RecognizeSpeech_FromFile('E:\\english\\data\\avi\\MU7554\\MU7554_4.wav')
 
 
 K.clear_session()
