@@ -47,8 +47,8 @@ class TestHTTPHandle(http.server.BaseHTTPRequestHandler):
 		RIFFindex = re.search(b"RIFF", datas).span()[0]
 		headInfo = datas[:RIFFindex]
 		bodyInfo = datas[RIFFindex:]
-
-		if re.search(b'name="token".*?asr', headInfo) is not None:
+		comment = re.compile(b'name="token".*?asr', re.DOTALL)
+		if comment.findall(headInfo) is not None:
 			if bodyInfo.find(b"\x00LIST") != -1:
 				wavData = bodyInfo[78:]
 			elif bodyInfo.find(b"\x00data") != -1:

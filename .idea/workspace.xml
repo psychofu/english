@@ -3,10 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="03ef7e57-0f65-477f-a937-59d5dd715c7f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/asrModel.py" beforeDir="false" afterPath="$PROJECT_DIR$/asrModel.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/events.out.tfevents.1624887559.DESKTOP-I9R3TMM" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/events.out.tfevents.1624889134.labubuntu-Precision-Tower-3620" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/readdata24.py" beforeDir="false" afterPath="$PROJECT_DIR$/readdata24.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -51,7 +47,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.train_mspeech">
+  <component name="RunManager" selected="Python.HttpServer">
     <configuration name="HttpServer" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="ASRT_english" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -180,11 +176,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.HttpServer" />
         <item itemvalue="Python.train_mspeech" />
         <item itemvalue="Python.getdict" />
         <item itemvalue="Python.changeFileName" />
         <item itemvalue="Python.fn" />
-        <item itemvalue="Python.HttpServer" />
       </list>
     </recent_temporary>
   </component>
@@ -256,6 +252,11 @@
           <url>file://D:/miniconda3/envs/tf1gpu/Lib/site-packages/keras/engine/training_utils.py</url>
           <line>132</line>
           <option name="timeStamp" value="35" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/HttpServer.py</url>
+          <line>50</line>
+          <option name="timeStamp" value="36" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
