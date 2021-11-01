@@ -85,10 +85,6 @@ class ModelSpeech:  # 语音模型类
         layer_h15 = MaxPooling2D(pool_size=1, strides=None, padding="valid")(layer_h14)  # 池化层
 
         layer_h16 = Reshape((200, 3200))(layer_h15)  # Reshape层
-        # layer_h16 = Reshape((700, 3200))(layer_h15)  # Reshape层
-        # layer_h16 = GRU(256, activation='relu', use_bias=True, kernel_initializer='he_normal')(layer_h16)
-        # layer_h5 = LSTM(256, activation='relu', use_bias=True, return_sequences=True)(layer_h4) # LSTM层
-        # layer_h6 = Dropout(0.2)(layer_h5) # 随机中断部分神经网络连接，防止过拟合
         layer_h16 = Dropout(0.3)(layer_h16)
         layer_h17 = Dense(128, activation="relu", use_bias=True, kernel_initializer='he_normal')(layer_h16)  # 全连接层
         layer_h17 = Dropout(0.3)(layer_h17)
@@ -96,7 +92,7 @@ class ModelSpeech:  # 语音模型类
 
         y_pred = Activation('softmax', name='Activation0')(layer_h18)
         model_data = Model(inputs=input_data, outputs=y_pred)
-        # model_data.summary()
+        model_data.summary()
 
         labels = Input(name='the_labels', shape=[self.label_max_string_length], dtype='float32')
         input_length = Input(name='input_length', shape=[1], dtype='int64')
@@ -126,14 +122,6 @@ class ModelSpeech:  # 语音模型类
         return K.ctc_batch_cost(labels, y_pred, input_length, label_length)
 
     def TrainModel(self, datapath, batch_size=32, save_step=1000, epochs=20):
-        """
-        训练模型
-        参数：
-            datapath: 数据保存的路径
-            epoch: 迭代轮数
-            save_step: 每多少步保存一次模型
-            filename: 默认保存文件名，不含文件后缀名
-        """
         data = DataSpeech(datapath, 'train')
         yielddatas = data.data_genetator(batch_size, self.AUDIO_LENGTH)
         checkpointDIR = "checkpoint"
@@ -147,8 +135,10 @@ class ModelSpeech:  # 语音模型类
             # self._model.fit_generator(yielddatas, save_step, nb_worker=2)  考虑：train_on_batch
             history = self._model.fit_generator(yielddatas, steps_per_epoch=save_step, epochs=epochs,
                                                 callbacks=[checkpoint, tensorboard])
+            # print(history.history())
         except StopIteration:
             print('[error] generator error. please check data format.')
+        # 保存weights
         self.SaveModel('savaModel')
 
     def LoadModel(self, filename):
@@ -165,89 +155,6 @@ class ModelSpeech:  # 语音模型类
         '''
         self._model.save_weights(filename + '.model')
         self.base_model.save_weights(filename + '.model.base')
-        # 需要安装 hdf5 模块
-        # self._model.save(filename + '.h5')
-        # self.base_model.save(filename + '.base.h5')
-        f = open('step' + ModelName + '.txt', 'w')
-        f.write(filename)
-        f.close()
-
-    def TestModel(self, datapath, str_dataset='dev', data_count=32, out_report=False, show_ratio=True,
-                  io_step_print=10, io_step_file=10):
-        '''
-        测试检验模型效果
-
-        io_step_print
-            为了减少测试时标准输出的io开销，可以通过调整这个参数来实现
-
-        io_step_file
-            为了减少测试时文件读写的io开销，可以通过调整这个参数来实现
-
-        '''
-        data = DataSpeech(datapath, str_dataset)
-        num_data = data.GetDataNum()  # 获取数据的数量
-        if data_count <= 0 or data_count > num_data:  # 当data_count为小于等于0或者大于测试数据量的值时，则使用全部数据来测试
-            data_count = num_data
-
-        try:
-            ran_num = random.randint(0, num_data - 1)  # 获取一个随机数
-
-            words_num = 0
-            word_error_num = 0
-
-            nowtime = time.strftime('%Y%m%d_%H%M%S', time.localtime(time.time()))
-            if out_report:
-                txt_obj = open('Test_Report_' + str_dataset + '_' + nowtime + '.txt', 'w', encoding='UTF-8')  # 打开文件并读入
-
-            txt = '测试报告\n模型编号 ' + ModelName + '\n\n'
-            for i in range(data_count):
-                data_input, data_labels = data.GetData((ran_num + i) % num_data)  # 从随机数开始连续向后取一定数量数据
-
-                # 数据格式出错处理 开始
-                # 当输入的wav文件长度过长时自动跳过该文件，转而使用下一个wav文件来运行
-                num_bias = 0
-                while data_input.shape[0] > self.AUDIO_LENGTH:
-                    print('*[Error]', 'wave data lenghth of num', (ran_num + i) % num_data, 'is too long.',
-                          '\n A Exception raise when test Speech Model.')
-                    num_bias += 1
-                    data_input, data_labels = data.GetData((ran_num + i + num_bias) % num_data)  # 从随机数开始连续向后取一定数量数据
-                # 数据格式出错处理 结束
-
-                pre = self.Predict(data_input, data_input.shape[0] // 8)
-
-                words_n = data_labels.shape[0]  # 获取每个句子的字数
-                words_num += words_n  # 把句子的总字数加上
-                edit_distance = GetEditDistance(data_labels, pre)  # 获取编辑距离
-                if edit_distance <= words_n:  # 当编辑距离小于等于句子字数时
-                    word_error_num += edit_distance  # 使用编辑距离作为错误字数
-                else:  # 否则肯定是增加了一堆乱七八糟的奇奇怪怪的字
-                    word_error_num += words_n  # 就直接加句子本来的总字数就好了
-
-                if (i % io_step_print == 0 or i == data_count - 1) and show_ratio == True:
-                    # print('测试进度：',i,'/',data_count)
-                    print('Test Count: ', i, '/', data_count)
-
-                if out_report == True:
-                    if i % io_step_file == 0 or i == data_count - 1:
-                        txt_obj.write(txt)
-                        txt = ''
-
-                    txt += str(i) + '\n'
-                    txt += 'True:\t' + str(data_labels) + '\n'
-                    txt += 'Pred:\t' + str(pre) + '\n'
-                    txt += '\n'
-
-            # print('*[测试结果] 语音识别 ' + str_dataset + ' 集语音单字错误率：', word_error_num / words_num * 100, '%')
-            print('*[Test Result] Speech Recognition ' + str_dataset + ' set word error ratio: ',
-                  word_error_num / words_num * 100, '%')
-            if out_report:
-                txt += '*[测试结果] 语音识别 ' + str_dataset + ' 集语音单字错误率： ' + str(word_error_num / words_num * 100) + ' %'
-                txt_obj.write(txt)
-                txt = ''
-                txt_obj.close()
-
-        except StopIteration:
-            print('[Error] Model Test Error. please check data format.')
 
     def Predict(self, data_input, input_len):
         '''
