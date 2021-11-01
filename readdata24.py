@@ -152,7 +152,7 @@ class DataSpeech:
 				ran_num = random.randint(0,self.DataNum - 1) # 获取一个随机数
 				filename = self.dic_wavlist[self.list_wavnum[ran_num]]
 				data_input, data_labels = self.GetData(ran_num)  # 通过随机数取一个数据
-				while len(data_input) > audio_length:
+				while len(data_input) > audio_length or data_input.shape[0] // 8 + data_input.shape[0] % 8 >= 200:
 					print("\n====>file: " + filename + "\t length = " + str(len(data_input)))
 					# 再来一遍
 					ran_num = random.randint(0, self.DataNum - 1)  # 获取一个随机数
@@ -176,10 +176,6 @@ class DataSpeech:
 			
 			label_length = np.matrix(label_length)
 			input_length = np.array([input_length]).T
-			#input_length = np.array(input_length)
-			#print('input_length:\n',input_length)
-			#X=X.reshape(batch_size, audio_length, 200, 1)
-			#print(X)
 			yield [X, y, input_length, label_length ], labels
 		pass
 		

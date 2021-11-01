@@ -28,7 +28,7 @@ class ModelSpeech:  # 语音模型类
         '''
         self.MS_OUTPUT_SIZE = outputSize  # 神经网络最终输出的每一个字符向量维度的大小
         self.label_max_string_length = 64
-        self.AUDIO_LENGTH = 3200
+        self.AUDIO_LENGTH = 1600
         self.AUDIO_FEATURE_LENGTH = 200
         self._model, self.base_model = self.CreateModel()
 
@@ -84,7 +84,7 @@ class ModelSpeech:  # 语音模型类
                            kernel_initializer='he_normal')(layer_h13)  # 卷积层
         layer_h15 = MaxPooling2D(pool_size=1, strides=None, padding="valid")(layer_h14)  # 池化层
 
-        layer_h16 = Reshape((400, 3200))(layer_h15)  # Reshape层
+        layer_h16 = Reshape((200, 3200))(layer_h15)  # Reshape层
         # layer_h16 = Reshape((700, 3200))(layer_h15)  # Reshape层
         # layer_h16 = GRU(256, activation='relu', use_bias=True, kernel_initializer='he_normal')(layer_h16)
         # layer_h5 = LSTM(256, activation='relu', use_bias=True, return_sequences=True)(layer_h4) # LSTM层
@@ -122,6 +122,7 @@ class ModelSpeech:  # 语音模型类
     def ctc_lambda_func(self, args):
         y_pred, labels, input_length, label_length = args
         y_pred = y_pred[:, :, :]
+        # length:  y_pred > input_length > label_length
         return K.ctc_batch_cost(labels, y_pred, input_length, label_length)
 
     def TrainModel(self, datapath, batch_size=32, save_step=1000, epochs=20):
@@ -148,7 +149,7 @@ class ModelSpeech:  # 语音模型类
                                                 callbacks=[checkpoint, tensorboard])
         except StopIteration:
             print('[error] generator error. please check data format.')
-        self.TestModel(datapath, str_dataset='test', data_count=4)
+        self.SaveModel('savaModel')
 
     def LoadModel(self, filename):
         '''
@@ -269,7 +270,7 @@ class ModelSpeech:  # 语音模型类
         base_pred = base_pred[:, :, :]
 
         # 防止多次调用ctc-decode 的get_value 导致内存持续增大 --------------------------------------------
-        ctc_class = Ctc_Decode(batch_size=batch_size, timestep=400, nclass=829)
+        ctc_class = Ctc_Decode(batch_size=batch_size, timestep=200, nclass=829)
         predict_y = ctc_class.ctc_decode_tf([base_pred, np.reshape(input_len, (1, 1))])  # ctc解码
         r1 = predict_y[0]
         # ------------------------------------------------------------------------------------------
@@ -290,13 +291,13 @@ class ModelSpeech:  # 语音模型类
 
         input_length = len(data_input)
         input_length = input_length // 8 + input_length % 8
-
         data_input = np.array(data_input, dtype=np.float)
         data_input = data_input.reshape(data_input.shape[0], data_input.shape[1], 1)
         # if len(data_input) > 1600:
         #     print("data_input length is : %d, wrong" % len(data_input))
         #     return None
         r1 = self.Predict(data_input, input_length)
+        print(r1)
         list_symbol_dic = GetSymbolList()  # 获取拼音列表
 
         r_str = []
@@ -403,24 +404,11 @@ def GetSymbolList():
         lines = [line.replace('\n', "") for line in lines]
         return lines
 
+if __name__ == "__main__":
+    a = ModelSpeech(829)
+    a.LoadModel("checkpoint/weights_model.hdf5")
 
-# from Pinyin2Hanzi import DefaultHmmParams
-# from Pinyin2Hanzi import viterbi
-#
-# hmmparams = DefaultHmmParams()
-# if __name__ == "__main__":
-#     a = ModelSpeech()
-#     a.LoadModel("model_speech/speech_model251_e_0_step_1361250.model")
-#
-#     pinyin = a.RecognizeSpeech_FromFile("test.wav")
-#     list_symbol_dic = GetSymbolList()  # 获取拼音列表
-#     r_str = []
-#     for i in pinyin:
-#         r_str.append(list_symbol_dic[i])
-#
-#     print("\ntest phones:")
-#     print(" ".join(r_str))
-#
-#     # 拼音转汉字
-#     result = ''.join(viterbi(hmm_params=hmmparams, observations=tuple(r_str), path_num=1)[0].path)
-#     print(result)
+    pinyin = a.RecognizeSpeech_FromFile("data/avi//MU204/MU204_14.wav")
+
+    print("\ntest phones:")
+    print(pinyin)

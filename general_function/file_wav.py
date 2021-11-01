@@ -4,7 +4,7 @@
 import os
 import wave
 import numpy as np
-#import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
 import math
 import time
 
@@ -128,7 +128,7 @@ def testFreq():
 
 if(__name__=='__main__'):
     # testFreq()
-    wave_data, fs = read_wav_data("E:\\py_project\\hk\\ASRT_english\\data\\avi\\MU291\\MU291_1.wav")
+    wave_data, fs = read_wav_data("E:\\py_project\\hk\\ASRT_english\\data\\avi\\MU291\\MU291_15.wav")
     # wave_data, fs = read_wav_data("../test.wav")
     wav_show(wave_data[0],fs)
     t0=time.time()
@@ -137,9 +137,9 @@ if(__name__=='__main__'):
     print('time cost:',t1-t0)
 
     freimg = freimg.T
-#    plt.subplot(111)
+    plt.subplot(111)
 
-#    plt.imshow(freimg)
-#    plt.colorbar(cax=None,ax=None,shrink=0.5)
+    plt.imshow(freimg)
+    plt.colorbar(cax=None,ax=None,shrink=0.5)
 
-#    plt.show()
+    plt.show()
